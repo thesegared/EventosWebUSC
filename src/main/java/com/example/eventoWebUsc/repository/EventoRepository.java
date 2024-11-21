@@ -1,15 +1,16 @@
 package com.example.eventoWebUsc.repository;
 
-import java.util.concurrent.CompletableFuture;
-
-import org.springframework.stereotype.Repository;
-
 import com.example.eventoWebUsc.entity.Evento;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Repository
 public class EventoRepository {
@@ -25,9 +26,13 @@ public class EventoRepository {
     // Método para crear o guardar un evento
     public CompletableFuture<Void> guardarEvento(Evento evento) {
         return CompletableFuture.runAsync(() -> {
+            if (evento.getId() == null || evento.getId().isEmpty()) {
+                evento.setId(databaseReference.push().getKey());
+            }
             databaseReference.child(evento.getId()).setValueAsync(evento);
         });
     }
+    
 
     // Método para leer un evento por su ID
     public CompletableFuture<Evento> obtenerEvento(String id) {
@@ -62,4 +67,40 @@ public class EventoRepository {
             databaseReference.child(id).removeValueAsync();
         });
     }
+
+    public void save(Evento evento) {
+        databaseReference.child(evento.getId()).setValueAsync(evento);
+    }
+
+    // Método para obtener todos los eventos
+    public CompletableFuture<List<Evento>> findAllAsync() {
+        CompletableFuture<List<Evento>> future = new CompletableFuture<>();
+        List<Evento> eventos = new ArrayList<>();
+    
+        System.out.println("Iniciando carga de eventos desde Firebase...");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("Datos obtenidos de Firebase, procesando...");
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Evento evento = snapshot.getValue(Evento.class);
+                    if (evento != null) {
+                        eventos.add(evento);
+                        System.out.println("Evento encontrado: " + evento.getNombre());
+                    }
+                }
+                System.out.println("Carga de eventos completada.");
+                future.complete(eventos);
+            }
+    
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.err.println("Error al cargar eventos desde Firebase: " + databaseError.getMessage());
+                future.completeExceptionally(new RuntimeException("Error al cargar eventos", databaseError.toException()));
+            }
+        });
+    
+        return future;
+    }
+    
 }

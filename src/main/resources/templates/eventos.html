@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Eventos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">USC Eventos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/eventos" th:href="@{/eventos}">Gestionar Eventos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <h2 class="text-center mb-4">Gestionar Eventos</h2>
+        <div class="text-end mb-3">
+            <a th:href="@{/eventos/nuevo}" class="btn btn-primary">Crear Nuevo Evento</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${eventos == null or #lists.isEmpty(eventos)}">
+                        <td colspan="4" class="text-center">No hay eventos disponibles.</td>
+                    </tr>
+                    <tr th:each="evento : ${eventos}">
+                        <td th:text="${evento.id}"></td>
+                        <td th:text="${evento.nombre}"></td>
+                        <td th:text="${evento.fecha}"></td>
+                        <td>
+                            <a th:href="@{/eventos/editar/{id}(id=${evento.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:href="@{/eventos/eliminar/{id}(id=${evento.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="custom-footer text-white text-center py-3 mt-5">
+        © 2024 Universidad Santiago de Cali - Todos los derechos reservados
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

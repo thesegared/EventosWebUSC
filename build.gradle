@@ -1,53 +1,68 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.5'
-	id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	all {
-        exclude group: "commons-logging", module: "commons-logging"
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	implementation 'com.google.firebase:firebase-admin:9.1.1'
-	implementation 'io.github.cdimascio:dotenv-java:3.0.0'
-	implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+    // Dependencias de Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Firebase Admin SDK
+    implementation 'com.google.firebase:firebase-admin:9.1.1'
+
+    // Jakarta Annotations y Validations
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+
+    // Dotenv para manejo de variables de entorno
+    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+
+    // SLF4J para manejo de logs
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
 
 
-	// SLF4J para el manejo de logs
-    //implementation 'org.slf4j:slf4j-api:1.7.36'
-    //implementation 'ch.qos.logback:logback-classic:1.2.11'
-	implementation 'org.slf4j:slf4j-api:2.0.9'
-	implementation 'ch.qos.logback:logback-classic:1.4.11'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    
+     developmentOnly "org.springframework.boot:spring-boot-devtools"
 
-    // Jakarta Annotations para @PostConstruct
-    implementation 'jakarta.annotation:jakarta.annotation-api:2.0.0'
+    // Lombok para reducir boilerplate
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Dependencias para pruebas
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencies {
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+configurations {
+    all {
+        exclude group: "commons-logging", module: "commons-logging"
+    }
 }

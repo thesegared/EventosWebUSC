@@ -1,0 +1,142 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333; /* Color del texto principal */
+}
+
+/* Animaciones de las tarjetas */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden; /* Para que el contenido no sobresalga */
+    background-color: white;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la tarjeta */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Sombra más marcada */
+    cursor: pointer; /* Cambia el cursor para indicar interactividad */
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1); /* Zoom ligero en la imagen al pasar el cursor */
+}
+
+/* Espaciado interno de las tarjetas */
+.card-body {
+    padding: 15px;
+}
+
+/* Títulos */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #182039; /* Color principal */
+}
+
+/* Descripción */
+.card-text {
+    color: #555;
+}
+
+/* Botones de la tarjeta (si los necesitas en el futuro) */
+.card .btn {
+    background-color: #182039;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card .btn:hover {
+    background-color: #1e2a4d; /* Color ligeramente más claro para hover */
+}
+
+/* Animación sutil del pie de página */
+footer {
+    background-color: #182039;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+footer:hover {
+    background-color: #1e2a4d; /* Cambia el color del pie de página al pasar el cursor */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #182039; /* Color principal */
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #a8b2d1; /* Color suave para hover */
+}
+
+/* Botones del navbar */
+.navbar .btn {
+    background-color: white;
+    color: #182039;
+    border: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .btn:hover {
+    background-color: #1e2a4d;
+    color: white;
+}
+
+/* Navbar personalizado */
+.custom-navbar {
+    background-color: #182039 !important; /* Color principal */
+    color: white !important;
+}
+
+.custom-navbar .nav-link {
+    color: white !important; /* Color de los enlaces */
+    transition: color 0.3s ease-in-out;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #a8b2d1 !important; /* Color de hover en los enlaces */
+}
+
+.custom-navbar .navbar-brand {
+    color: white !important; /* Color del texto del título */
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: #a8b2d1 !important;
+}
+
+.custom-navbar .navbar-toggler {
+    border-color: white !important; /* Cambia el color del borde del botón */
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* Cambia el color del icono del toggler */
+}
+
+/* Estilo del Footer */
+.custom-footer {
+    background-color: #182039 !important; /* Mismo color principal */
+    color: white !important; /* Texto blanco */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-footer:hover {
+    background-color: #1e2a4d !important; /* Color más claro en hover */
+}

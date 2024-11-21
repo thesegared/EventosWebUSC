@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle del Evento</title>
+</head>
+<body>
+    <h1 th:text="${evento.nombre}"></h1>
+    <p th:text="${evento.descripcion}"></p>
+    <p><strong>Fecha:</strong> <span th:text="${evento.fecha}"></span></p>
+    <img th:src="@{/images/{imagen}(imagen=${evento.imagen})}" alt="Imagen del Evento">
+    <a href="/eventos">Volver a la lista</a>
+</body>
+</html>

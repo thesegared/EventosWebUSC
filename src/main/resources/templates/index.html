@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">USC Eventos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/eventos" th:href="@{/eventos}">Gestionar Eventos</a>
+                    </li>
+                </ul> 
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <h2 class="text-center mb-4">¡Ven y Participa de Nuestros Eventos!</h2>
+        <div class="row g-4">
+            <!-- Iterar sobre los eventos -->
+            <div th:each="evento : ${eventos}" class="col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="card shadow-sm w-100">
+                    <img th:src="${evento.imagenUrl}" class="card-img-top" alt="Imagen del evento">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${evento.nombre}"></h5>
+                        <p class="card-text text-muted" th:text="${evento.descripcion}"></p>
+                        <p class="mb-1"><strong>Fecha:</strong> <span th:text="${evento.fecha}"></span></p>
+                        <p class="mb-0"><strong>Lugar:</strong> <span th:text="${evento.lugar}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="custom-footer text-white text-center py-3 mt-5">
+        © 2024 Universidad Santiago de Cali - Todos los derechos reservados<br>
+        Desarrollado por: Sebastián Gaviria - Juan Valdez - Nicolas Moreno
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

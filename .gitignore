@@ -1,66 +1,39 @@
-HELP.md
-.gradle/
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+### Archivos del sistema ###
+.DS_Store
+Thumbs.db
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
+### Archivos generados por IDEs ###
 .idea/
 *.iws
 *.iml
 *.ipr
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+bin/
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-
-### VS Code ###
 .vscode/
 
-# Archivos sensibles
-.env
-src/main/resources/usc-eventos-bd-firebase-adminsdk-pjv0r-259c1e8e32.json
-src\main\resources\usc-eventos-bd-firebase-adminsdk-pjv0r-259c1e8e32.json
-
-# Node.js dependencies
-node_modules/
-
-# Archivos del sistema
-.DS_Store
-Thumbs.db
-
-# Node.js dependencies
-node_modules/
-
-# Archivos sensibles
-.env
-src/main/resources/usc-eventos-bd-firebase-adminsdk-pjv0r-259c1e8e32.json
-EventosWebUSC.git/
-
-
-# Archivos generados por Gradle
+### Archivos generados por Gradle ###
 .gradle/
 build/
+!gradle/wrapper/gradle-wrapper.jar
 
-# Archivos del sistema
-.DS_Store
-Thumbs.db
+### Dependencias de Node.js ###
+node_modules/
+
+### Archivos sensibles ###
+.env
+src/main/resources/*.json
+
+### Archivos de Git ###
+/EventosWebUSC.git/

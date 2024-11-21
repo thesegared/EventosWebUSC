@@ -1,24 +1,29 @@
 package com.example.eventoWebUsc.entity;
 
-import java.time.LocalDate;
-
 public class Evento {
-    private String id; // Identificador único del evento
-    private String nombre; // Nombre del evento
-    private String descripcion; // Descripción del evento
-    private LocalDate fecha; // Fecha del evento
-    private String organizador; // Nombre del organizador del evento
+    private String id;
+    private String nombre;
+    private String descripcion;
+    private String fecha;
+    private String facultad;
+    private String valor;
+    private String lugar;
+    private String imagenUrl;
 
-    // Constructor vacío (requerido por Firebase)
-    public Evento() {}
+    // Constructor vacío (obligatorio para Firebase y frameworks)
+    public Evento() {
+    }
 
-    // Constructor con parámetros
-    public Evento(String id, String nombre, String descripcion, LocalDate fecha, String organizador) {
+    // Constructor con los campos necesarios
+    public Evento(String id, String nombre, String descripcion, String fecha, String facultad, String valor, String lugar, String imagenUrl) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
-        this.organizador = organizador;
+        this.facultad = facultad;
+        this.valor = valor;
+        this.lugar = lugar;
+        this.imagenUrl = imagenUrl;
     }
 
     // Getters y Setters
@@ -46,19 +51,43 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public String getOrganizador() {
-        return organizador;
+    public String getFacultad() {
+        return facultad;
     }
 
-    public void setOrganizador(String organizador) {
-        this.organizador = organizador;
+    public void setFacultad(String facultad) {
+        this.facultad = facultad;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 }
